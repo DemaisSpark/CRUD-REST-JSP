@@ -1,0 +1,62 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Spring CRUD</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    
+	<script src="angular.js"></script>   
+	<script src="app.js"></script>
+</head>
+<body>
+<div class="container" ng-controller='MainCtrl'>
+
+  <div class="col-md-offset-2 col-md-7">
+   <h2 class="text-center">Spring CRUD</h2>
+   <div class="panel panel-info">
+    <div class="panel-heading">
+     <div class="panel-title">Login</div>
+    </div>
+	<div class="panel-body">
+	<div ng-show="!loggedIn()" class="col-md-offset-2 col-md-9">
+		<h3>Faça o Login como Administrador</h3>
+		<h3>(Usuario: Admin ou admin)</h3>
+		</br>
+		<form ng-submit="login()">
+			<h4><label class="col-md-3 control-label">Usuario:</label></h4>
+			<input type="text" ng-model="userName"/>
+			<input type="submit" value="Login" class="btn btn-success"/>
+			<br/>
+	 		<br/>
+		</form>
+	</div>
+	<div class="alert alert-danger" role="alert" ng-show="error.data.message">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Error:</span>
+	  {{error.data.message}}
+	</div>	
+	<div ng-show="loggedIn()">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-9">
+				<h3><span class="label label-success">Sucesso!</span> Bem-Vindo Usuario: {{userName}}</h3>
+	 			<br/>
+	 			<a href="/read-contact" class="btn btn-primary" role="button">Lista de Contatos</a>
+	 			<a href ng-click="logout()" class="btn btn-primary col-md-offset-1" role="button">Logout</a>
+	 			<br/>
+	 			<br/>
+			</div>
+		</div>
+	</div>
+	
+   </div>
+   </div>
+  </div>
+  	
+</div>
+</body>
+</html>
